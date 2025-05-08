@@ -1,0 +1,43 @@
+name: Deploy SvelteKit to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main # Adjust to your default branch (e.g., master)
+  workflow_dispatch: # Allows manual triggering
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # Required to push to gh-pages branch
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20' # Use a current LTS version, e.g., 18.x, 20.x
+          cache: 'npm' # Or 'yarn' if you use yarn
+
+      - name: Install dependencies
+        run: npm ci # Or: yarn install --frozen-lockfile
+
+      - name: Build SvelteKit application
+        # The GITHUB_REPOSITORY environment variable is automatically available to this step.
+        # svelte.config.js can use it to set paths.base as shown in the explanation.
+        run: npm run build
+        env:
+          NODE_ENV: production # Ensures process.env.NODE_ENV is set for the build
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./build # This must match adapter-static's output (pages and assets dir)
+          # force_orphan: true # Optional: Creates a new gh-pages branch without history each time.
+          # cname: your.custom.domain.com # Optional: If you use a custom domain
+          # user_name: 'github-actions[bot]' # Optional
+          # user_email: 'github-actions[bot]@users.noreply.github.com' # Optional
