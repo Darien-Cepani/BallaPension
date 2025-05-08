@@ -113,7 +113,7 @@
   <nav 
     class:shadow-lg={scrolledDown}
     class:backdrop-blur-sm={scrolledDown}
-    class="mx-auto max-w-5xl rounded-full flex items-center justify-between p-3 px-6 transition-all duration-300 ease-in-out 
+    class="mx-auto max-w-5xl rounded-full flex items-center justify-between p-2 px-4 md:px-6 md:p-3transition-all duration-300 ease-in-out 
            {scrolledDown 
              ? 'border border-gray-200/70 dark:border-gray-700/70 bg-white/80 dark:bg-gray-800/80' 
              : 'border border-transparent bg-transparent'}"
@@ -123,31 +123,37 @@
       <!-- Logo section -->
       <a bind:this={logo} href="/" class="-m-1.5 p-1.5 flex flex-row items-center gap-x-2 opacity-0">
         <span class="sr-only">BallaPension</span>
-        <img class:invert={!scrolledDown} class="h-8 w-auto dark:invert" src="branding/logo.png" alt="BallaPension Logo">
-        <h2 class="font-bold text-xl transition-colors duration-300 ease-in-out" 
+        <img class:invert={!scrolledDown} class="h-7 md:h-9 w-auto dark:invert" src="branding/logo.png" alt="BallaPension Logo">
+        <h2 class="font-bold text-sm sm:text-xl transition-colors duration-300 ease-in-out" 
             class:text-white={!scrolledDown} 
             class:text-black={scrolledDown}
             class:dark:text-white={scrolledDown} >BallaPension</h2>
       </a>
     </div>
     <!-- Desktop Navigation (hidden on small screens) -->
-    <div class="hidden md:flex md:gap-x-4 lg:gap-x-4 items-center">
-      <a bind:this={navLinks[0]} href="#how-it-works" on:click={closeMobileMenu} class="text-sm font-semibold leading-6 hover:bg-indigo-600 hover:text-white dark:hover:bg-indigo-400 py-2 px-4 rounded-full transition-colors duration-200 ease-in-out opacity-0"
+    <div class="hidden md:flex md:gap-x-5 lg:gap-x-4 items-center">
+      <a bind:this={navLinks[0]} href="#how-it-works" on:click={closeMobileMenu} class="text-lg font-semibold leading-6 hover:bg-indigo-600 hover:text-white dark:hover:bg-indigo-400 py-2 px-4 rounded-full transition-colors duration-200 ease-in-out opacity-0"
          class:text-white={!scrolledDown}
          class:text-gray-900={scrolledDown}
          class:dark:text-white={scrolledDown}>How it Works</a>
-      <a bind:this={navLinks[1]} href="#testimonials" on:click={closeMobileMenu} class="text-sm font-semibold leading-6 hover:bg-indigo-600 hover:text-white dark:hover:bg-indigo-400 py-2 px-4 rounded-full transition-colors duration-200 ease-in-out opacity-0"
+      <a bind:this={navLinks[1]} href="#testimonials" on:click={closeMobileMenu} class="text-lg font-semibold leading-6 hover:bg-indigo-600 hover:text-white dark:hover:bg-indigo-400 py-2 px-4 rounded-full transition-colors duration-200 ease-in-out opacity-0"
          class:text-white={!scrolledDown}
          class:text-gray-900={scrolledDown}
          class:dark:text-white={scrolledDown}>Testimonials</a>
-      <a bind:this={navLinks[2]} href="#contact" on:click={closeMobileMenu} class="text-sm font-semibold leading-6 hover:bg-indigo-600 hover:text-white dark:hover:bg-indigo-400 py-2 px-4 rounded-full transition-colors duration-200 ease-in-out opacity-0"
+      <a bind:this={navLinks[2]} href="#contact" on:click={closeMobileMenu} class="text-lg font-semibold leading-6 hover:bg-indigo-600 hover:text-white dark:hover:bg-indigo-400 py-2 px-4 rounded-full transition-colors duration-200 ease-in-out opacity-0"
          class:text-white={!scrolledDown}
          class:text-gray-900={scrolledDown}
          class:dark:text-white={scrolledDown}>Contact</a>
     </div>
     <!-- Right-side Actions (Visible on all sizes, adjusted layout for mobile) -->
     <div class="flex lg:flex-1 justify-end items-center gap-x-2 sm:gap-x-4">
-      <a bind:this={getHelpButton} href="#contact" on:click={closeMobileMenu} class="hidden md:inline-flex cta-pulse rounded-full bg-indigo-600 px-3 sm:px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 dark:hover:bg-indigo-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 dark:focus-visible:outline-indigo-400 transition-colors duration-200 ease-in-out opacity-0">Claim your Pension</a>
+      <a bind:this={getHelpButton} 
+            href="tel:+302310265915" on:click={closeMobileMenu}
+            class="hidden md:inline-flex cta-pulse rounded-full bg-green-600 px-3 sm:px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-green-500 dark:hover:bg-green-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600 dark:focus-visible:outline-green-400 transition-colors duration-200 ease-in-out opacity-0"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"></path></svg>
+            Call us
+          </a>
       <div bind:this={themeToggle} class="opacity-0">
         <ThemeToggle />
       </div>
@@ -157,7 +163,7 @@
         bind:this={mobileMenuButton} 
         on:click|stopPropagation={() => mobileMenuOpen = !mobileMenuOpen}
         type="button" 
-        class="inline-flex items-center justify-center rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500 transition-colors duration-200 ease-in-out"
+        class="inline-flex items-center -ml-3 justify-center rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500 transition-colors duration-200 ease-in-out"
         class:text-white={!scrolledDown}
         class:text-gray-700={scrolledDown}
         class:dark:text-gray-200={scrolledDown}

@@ -2,6 +2,7 @@
   import { onMount, onDestroy } from 'svelte';
   import L from 'leaflet'; 
   import 'leaflet/dist/leaflet.css';
+  import { Phone, Mail, MapPin } from 'lucide-svelte'; // Import icons
 
   let mapInstance = null;
   let currentTileLayer = null;
@@ -99,71 +100,124 @@
     }
   });
 
+  const phoneNumber = '+30 2310 265915';
+  const telLink = `tel:${phoneNumber.replace(/\(|\)|\s|-/g, '')}`;
+
+  function openAddressInMap() {
+    const address = '123 Main Street, Athens, Greece 10557';
+    const encodedAddress = encodeURIComponent(address);
+    // Standard Google Maps link as a robust fallback
+    const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodedAddress}`;
+    // For iOS, try to open in Apple Maps
+    const iOSUrl = `maps://maps.apple.com/?q=${encodedAddress}`;
+    // For Android, use geo URI
+    const androidUrl = `geo:0,0?q=${encodedAddress}`;
+
+    const userAgent = navigator.userAgent || navigator.vendor;
+    let mapOpened = false;
+
+    if (/iPad|iPhone|iPod/.test(userAgent)) {
+      // Attempt to open Apple Maps
+      window.location.href = iOSUrl;
+      mapOpened = true; // Assume it might open, though detection is hard
+    } else if (/android/i.test(userAgent)) {
+      // Attempt to open in Android maps app
+      window.location.href = androidUrl;
+      mapOpened = true;
+    }
+
+    // Fallback to Google Maps web if no specific app was triggered or if preferred
+    // A timeout can give native apps a chance to open
+    setTimeout(() => {
+        // This check is imperfect; ideally, you'd know if the native app actually opened.
+        // For simplicity, if we tried a native URL, we might not want to immediately redirect.
+        // However, a direct fallback to Google Maps web is often user-friendly.
+        if (!mapOpened) { // Or always offer Google Maps as an option
+            window.open(googleMapsUrl, '_blank');
+        }
+    }, 500); // 500ms delay, adjust as needed
+  }
+
 </script>
 
-<section id="contact" class="py-16 md:py-24 bg-gray-100 dark:bg-gray-900">
+<section id="contact" class="py-16 md:py-24 bg-slate-100 dark:bg-gray-900">
   <div class="container mx-auto px-4">
     <!-- Title Block -->
-    <div bind:this={titleBlock} class="text-center mb-12">
-      <h2 class="text-lg font-semibold leading-8 tracking-tight text-indigo-600 dark:text-indigo-400">
-        Contact
+    <div bind:this={titleBlock} class="text-center mb-12 md:mb-16">
+      <h2 class="text-xl font-semibold leading-7 text-indigo-600 dark:text-indigo-400">
+        Contact Us
       </h2>
-      <p class="mt-2 text-3xl font-bold tracking-tight text-gray-900 dark:text-white font-heading sm:text-4xl">
+      <h2 class="mt-2 text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
         Get in Touch
-      </p>
-      <p class="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-        Ready to discuss your pension needs? Contact us via phone or email, or find our location below.
+      </h2>
+      <p class="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+        Ready to discuss your pension needs? We're here to help. Contact us via phone, email, or visit our office.
       </p>
     </div>
 
-    <!-- Contact Content: Map and CTAs -->
-    <div bind:this={contactContent} class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
+    <!-- Contact Content: Info Card and Map -->
+    <div bind:this={contactContent} class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-start">
       
-      <!-- Map Container -->
-      <div id="map" class="w-full h-80 md:h-96 rounded-lg shadow-lg overflow-hidden border border-gray-300 dark:border-gray-700 z-0">
-        <!-- Leaflet map will render here -->
-      </div>
+      <!-- Contact Info Card -->
+      <div class="bg-white dark:bg-slate-800/70 p-6 sm:p-8 rounded-xl shadow-xl flex flex-col ring-1 ring-slate-900/5 dark:ring-white/10">
+        <h3 class="text-2xl font-semibold text-gray-900 dark:text-white mb-8 text-center md:text-left">
+          Contact Details
+        </h3>
+        
+        <div class="space-y-6 flex-grow">
+          <!-- Phone Item -->
+          <div class="flex items-center">
+            <div class="flex-shrink-0 w-12 h-12 rounded-full bg-indigo-50 dark:bg-slate-700 flex items-center justify-center mr-4 ring-1 ring-indigo-200 dark:ring-slate-600">
+              <Phone class="w-6 h-6 text-indigo-600 dark:text-indigo-400" />
+            </div>
+            <div>
+              <p class="text-sm text-gray-500 dark:text-gray-400">Call Us</p>
+              <a href="tel:+302310265915" class="text-lg font-medium text-indigo-600 hover:text-indigo-700 dark:text-indigo-400 dark:hover:text-indigo-300 transition-colors">
+                +30 2310 265915
+              </a>
+            </div>
+          </div>
 
-      <!-- Contact Info & CTAs -->
-      <div class="text-center md:text-left">
-        <h3 class="text-2xl font-semibold text-gray-800 dark:text-white mb-6">Contact Now!</h3>
-
-        <div class="flex flex-col sm:flex-row justify-center md:justify-start gap-4">
-          <a 
-            href="tel:+301234567890" 
-            class="cta-button bg-green-600 hover:bg-green-700 dark:bg-green-500 dark:hover:bg-green-600 inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white shadow-sm transition duration-150 ease-in-out"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"></path></svg>
-            Speak on the phone
-          </a>
-          <a 
-            href="mailto:info@ballapension.com"
-            class="cta-button bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white shadow-sm transition duration-150 ease-in-out"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path></svg>
-            Send an email
-          </a>
+          <!-- Email Item -->
+          <div class="flex items-center">
+            <div class="flex-shrink-0 w-12 h-12 rounded-full bg-indigo-50 dark:bg-slate-700 flex items-center justify-center mr-4 ring-1 ring-indigo-200 dark:ring-slate-600">
+              <Mail class="w-6 h-6 text-indigo-600 dark:text-indigo-400" />
+            </div>
+            <div>
+              <p class="text-sm text-gray-500 dark:text-gray-400">Email Us</p>
+              <a href="mailto:info@ballapension.gr" class="text-lg font-medium text-indigo-600 hover:text-indigo-700 dark:text-indigo-400 dark:hover:text-indigo-300 transition-colors">
+                info@ballapension.gr
+              </a>
+            </div>
+          </div>
+          
+          <!-- Address Item -->
+          <div class="flex items-start">
+            <div class="flex-shrink-0 w-12 h-12 rounded-full bg-indigo-50 dark:bg-slate-700 flex items-center justify-center mr-4 mt-1 ring-1 ring-indigo-200 dark:ring-slate-600">
+              <MapPin class="w-6 h-6 text-indigo-600 dark:text-indigo-400" />
+            </div>
+            <div>
+              <p class="text-sm text-gray-500 dark:text-gray-400">Our Office</p>
+              <a 
+                on:click={openAddressInMap}
+                class="text-lg cursor-pointer text-left font-medium text-indigo-600 hover:text-indigo-700 dark:text-indigo-400 dark:hover:text-indigo-300 transition-colors focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-slate-800 rounded-sm">
+                123 Main Street, Athens, Greece 10557
+            </a>
+            </div>
+          </div>
         </div>
 
-        <p class="text-gray-700 dark:text-gray-300 mt-8 mb-2">
-          Find us at our office:
-        </p>
-        <p class="text-lg font-medium text-gray-800 dark:text-white cursor-pointer hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors duration-200" on:click={() => {
-          const address = encodeURIComponent("123 Main Street, Athens, Greece 10557");
-          const iOSUrl = `maps://maps.apple.com/?q=${address}`;
-          const androidUrl = `https://maps.google.com/?q=${address}`;
-          
-          // Detect platform and open appropriate maps app
-          if (/(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent)) {
-            window.location.href = iOSUrl;
-          } else {
-            window.location.href = androidUrl;
-          }
-        }}>
-          123 Main Street, Athens, Greece 10557
-        </p>
+        <div class="mt-8 pt-8 border-t border-gray-200 dark:border-slate-700/50">
+          <p class="text-center text-sm text-gray-600 dark:text-gray-400">
+            We aim to respond to all inquiries within 24 business hours.
+          </p>
+        </div>
       </div>
 
+      <!-- Map Container -->
+      <div id="map" class="w-full h-96 md:h-full min-h-[410px] rounded-xl shadow-xl overflow-hidden border border-gray-200 dark:border-slate-700/50 z-0">
+        <!-- Leaflet map will render here -->
+      </div>
     </div>
   </div>
 </section>
@@ -215,7 +269,7 @@
    .dark :global(.leaflet-popup-close-button) {
        color: #9ca3af; /* dark:text-gray-400 */
    }
-    .dark :global(.leaflet-popup-close-button:hover) {
+   .dark :global(.leaflet-popup-close-button:hover) {
        color: #ffffff; /* dark:hover:text-white */
    }
 
@@ -239,9 +293,9 @@
         /* Default (light mode) */
         color: transparent; /* blue-500 */
     }
-     .dark :global(.leaflet-control-attribution a) {
+    .dark :global(.leaflet-control-attribution a) {
         color: transparent; /* blue-400 */
-     }
+    }
 
     /* Style Zoom Controls */
     :global(.leaflet-control-zoom a) {
