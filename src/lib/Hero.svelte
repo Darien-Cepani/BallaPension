@@ -3,6 +3,8 @@
   import { gsap } from 'gsap';
   import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
+  const base = import.meta.env.BASE_URL;
+
   // Refs for animation
   let sectionContainer;
   let videoBackground;
@@ -81,9 +83,9 @@
   <!-- Video Background -->
   <video
     bind:this={videoBackground}
-    src="/videos/Herobg.webm"
-    autoplay
-    loop
+    src="{base}videos/Herobg.webm"
+    autoplay  
+    loop  
     muted
     playsinline
     class="absolute top-0 left-0 w-full h-full object-cover [object-position:26%_0px] z-0 md:object-center"

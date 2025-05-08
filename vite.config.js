@@ -18,3 +18,4 @@ export default defineConfig({
     allowedHosts: ['2883-45-66-42-245.ngrok-free.app', 'localhost', '127.0.0.1']
   }
 })
+  

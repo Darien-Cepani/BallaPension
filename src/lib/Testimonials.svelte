@@ -1,11 +1,14 @@
 <script>
   // Sample Testimonial Data - Reworked for Google Review style
+
+  const base = import.meta.env.BASE_URL
+
   const testimonials = [
     {
       id: 1,
       name: 'Alex P.',
       quote: 'Fantastic service! They helped me navigate the complex pension process with ease and got me a great result.',
-      image: '/images/avatar1.jpg', // Placeholder, can be a generic avatar if real ones aren't available
+      image: `${base}images/avatar1.jpg`, // Placeholder, can be a generic avatar if real ones aren't available
       stars: 5,
       date: '3 weeks ago',
     },
@@ -13,15 +16,15 @@
       id: 2,
       name: 'Maria K.',
       quote: 'Highly recommended. Professional, efficient, and always kept me informed. Made a stressful situation much easier.',
-      image: '/images/avatar2.jpg',
-      stars: 5,
+      image: `${base}images/avatar2.jpg`,
+      stars: 5, 
       date: '1 month ago',
     },
     {
       id: 3,
       name: 'John S.',
       quote: 'I was unsure about my pension rights, but BallaPension clarified everything and fought for my claim successfully.',
-      image: '/images/avatar3.jpg',
+      image: `${base}images/avatar3.jpg`,
       stars: 4,
       date: '2 months ago',
     },
@@ -29,7 +32,7 @@
       id: 4,
       name: 'Elena G.',
       quote: 'Excellent communication and expertise. Very happy with the outcome. Thank you BallaPension!',
-      image: '/images/avatar4.jpg',
+      image: `${base}images/avatar4.jpg`,
       stars: 5,
       date: '1 week ago',
     },
@@ -37,7 +40,7 @@
       id: 5,
       name: 'Nikos V.',
       quote: 'A truly professional team that delivered on their promises. Made the whole process straightforward.',
-      image: '/images/avatar5.jpg',
+      image: `${base}images/avatar5.jpg`,
       stars: 5,
       date: '3 days ago',
     },
@@ -45,7 +48,7 @@
       id: 6,
       name: 'Sophia L.',
       quote: 'They took the weight off my shoulders and handled everything perfectly. Five stars from me!',
-      image: '/images/avatar6.jpg',
+      image: `${base}images/avatar6.jpg`,
       stars: 5,
       date: '2 weeks ago',
     },

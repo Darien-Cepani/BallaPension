@@ -12,7 +12,7 @@
     "@fortawesome/fontawesome-free": "^6.7.2",
     "@sveltejs/vite-plugin-svelte": "^5.0.3",
     "autoprefixer": "^10.4.21",
-    "clsx": "^2.1.1",
+    "clsx": "^2.1.1", 
     "lucide-svelte": "^0.503.0",
     "shadcn-svelte": "^0.14.2",
     "svelte": "^5.23.1",

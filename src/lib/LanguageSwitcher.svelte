@@ -75,7 +75,7 @@
 
 <a
   on:click={switchLanguage}
-  class="notranslate fixed bottom-18 text-white right-0 rounded-full w-15 h-14 z-50 shadow-lg transition-transform duration-200 ease-in-out hover:scale-110 md:hidden flex items-center justify-center relative overflow-hidden"
+  class="notranslate bottom-18 text-white right-0 rounded-full w-15 h-14 z-50 shadow-lg transition-transform duration-200 ease-in-out hover:scale-110 md:hidden flex items-center justify-center relative overflow-hidden"
   aria-label="Switch language"
 >
   <div 
