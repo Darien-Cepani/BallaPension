@@ -18,6 +18,20 @@
   import LanguageSwitcher from './lib/LanguageSwitcher.svelte';
   import { PhoneIcon } from 'lucide-svelte';
 
+  import { fly } from 'svelte/transition';
+    let callButton;
+    let scrolledPastHero = false;
+    
+    function handleScroll() {
+      const heroHeight = document.querySelector('section').offsetHeight;
+      scrolledPastHero = window.scrollY > heroHeight * 0.3;
+    }
+    
+    onMount(() => {
+      window.addEventListener('scroll', handleScroll);
+      return () => window.removeEventListener('scroll', handleScroll);
+    });
+
   const phoneNumber = '+30 2310 265915';
   const telLink = `tel:${phoneNumber.replace(/\(|\)|\s|-/g, '')}`;
   
@@ -58,19 +72,28 @@
   <Contact />
 <Footer />
 
-  <!-- Floating Action Button for Call - Mobile Only -->
-  <a
-  href={telLink}
-  class="fixed bottom-6 right-6 z-50 bg-green-600 hover:bg-green-700 text-white p-4 rounded-full shadow-lg transition-transform duration-200 ease-in-out hover:scale-110 md:hidden flex items-center justify-center"
-  aria-label="Call us"
-  >
-  <PhoneIcon size={24} />
-  <span class="sr-only">Call Us</span>
-  </a>
 
-  <div class="fixed bottom-6 right-6 z-40">
-    <LanguageSwitcher />
+<div class="fixed right-6 z-40" 
+     style="bottom: {scrolledPastHero ? '1.5rem' : '-3rem'}; 
+            transition: bottom 0.3s ease-out">
+  <LanguageSwitcher />
+</div>
+
+  <!-- Floating Action Button for Call - Mobile Only -->
+  <div bind:this={callButton} class="md:hidden">
+    {#if scrolledPastHero}
+      <a
+        href={telLink}
+        class="fixed bottom-6 right-6 z-50 bg-green-600 hover:bg-green-700 text-white p-4 rounded-full shadow-lg transition-transform duration-200 ease-in-out hover:scale-110 flex items-center justify-center"
+        aria-label="Call us"
+        transition:fly={{ duration: 300, x: 100 }}
+      >
+        <PhoneIcon size={24} />
+        <span class="sr-only">Call Us</span>
+      </a>
+    {/if}
   </div>
+
 </main>
 
 

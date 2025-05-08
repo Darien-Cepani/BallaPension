@@ -75,11 +75,11 @@
 
 <a
   on:click={switchLanguage}
-  class="notranslate bottom-18 text-white right-0 rounded-full w-15 h-14 z-50 shadow-lg transition-transform duration-200 ease-in-out hover:scale-110 md:hidden flex items-center justify-center relative overflow-hidden"
+  class="notranslate bottom-18 text-white right-0 rounded-full w-15 h-14 z-50 shadow-lg transition-transform duration-200 ease-in-out hover:scale-110 md:hidden flex items-center justify-center relative overflow-hidden backdrop-blur-sm"
   aria-label="Switch language"
 >
   <div 
-    class="absolute inset-0 opacity-50" 
+    class="absolute inset-0 opacity-30" 
     style="background-image: url('images/{currentLang === 'en' ? 'greece' : 'english'}.webp'); background-size: cover; background-position: center;"
   ></div>
   <h2 class="relative z-10 text-xl font-semibold text-white [text-shadow:_1px_1px_3px_rgba(0,0,0,0.7)]">
