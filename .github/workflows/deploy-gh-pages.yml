@@ -36,7 +36,7 @@ jobs:
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./build # This must match adapter-static's output (pages and assets dir)
+          publish_dir: ./dist # This must match adapter-static's output (pages and assets dir)
           # force_orphan: true # Optional: Creates a new gh-pages branch without history each time.
           # cname: your.custom.domain.com # Optional: If you use a custom domain
           # user_name: 'github-actions[bot]' # Optional

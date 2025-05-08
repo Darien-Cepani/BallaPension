@@ -9,8 +9,8 @@ const repoName = process.env.GITHUB_REPOSITORY ? process.env.GITHUB_REPOSITORY.s
 const config = {
   kit: {
     adapter: adapter({
-      pages: 'build',
-      assets: 'build',
+      pages: 'dist',
+      assets: 'dist',
       fallback: null, // or 'index.html' / '200.html' for SPA-like behavior
       precompress: false,
       strict: true

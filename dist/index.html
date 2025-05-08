@@ -2,17 +2,44 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/assets/logo-BlWLaMps.png" />
+    <link rel="icon" type="image/png" href="/branding/favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>BallaPension - Secure Your Retirement Funds</title>
+    <title>Balla Pension</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script type="module" crossorigin src="/assets/index-CskwwKq1.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-Bhf4Qu4H.css">
+    <style>
+      /* Hide the Google Translate banner */
+      .goog-te-banner-frame.skiptranslate {
+        display: none !important;
+      }
+      body {
+        top: 0px !important; /* Prevent body from being pushed down by the banner */
+      }
+      /* Optional: Hide the 'Powered by Google Translate' attribution if desired, though consider their terms of service */
+      /* .goog-logo-link { display: none !important; } */
+      /* .goog-te-gadget span { display: none !important; } */
+    </style>
+    <script type="module" crossorigin src="/assets/index-ZVcZxZ0E.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-BhjSdhIS.css">
   </head>
   <body>
     <div id="app"></div>
+
+    <!-- Google Translate Element - Required for custom button approach -->
+    <div id="google_translate_element" style="display:none !important;"></div>
+    <script type="text/javascript">
+      function googleTranslateElementInit() {
+        new google.translate.TranslateElement({
+          pageLanguage: 'en',
+          includedLanguages: 'en,el', // el is for Greek
+          layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+          autoDisplay: false
+        }, 'google_translate_element');
+      }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <!-- End Google Translate Element -->
   </body>
 </html>
