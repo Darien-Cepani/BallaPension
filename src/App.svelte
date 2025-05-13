@@ -73,8 +73,12 @@
 <Footer />
 
 
-<div class="fixed right-6 z-40" 
-     style="bottom: {scrolledPastHero ? '1.5rem' : '-3rem'}; 
+<div class="fixed right-3 z-40 hidden md:block" 
+     style="bottom: 1rem">
+  <LanguageSwitcher />
+</div>
+<div class="fixed right-3 z-40 md:hidden" 
+     style="bottom: {scrolledPastHero ? '0rem' : '-3.8rem'}; 
             transition: bottom 0.3s ease-out">
   <LanguageSwitcher />
 </div>
@@ -82,15 +86,17 @@
   <!-- Floating Action Button for Call - Mobile Only -->
   <div bind:this={callButton} class="md:hidden">
     {#if scrolledPastHero}
-      <a
-        href={telLink}
-        class="fixed bottom-6 right-6 z-50 bg-green-600 hover:bg-green-700 text-white p-4 rounded-full shadow-lg transition-transform duration-200 ease-in-out hover:scale-110 flex items-center justify-center"
+      <button
+        on:click={() => window.open(telLink, '_blank')}
+        on:keydown={(e) => e.key === 'Enter' && window.open(telLink, '_blank')}
+        type="button"
+        class="fixed bottom-2 right-3 z-50 bg-green-600 hover:bg-green-700 text-white p-4 rounded-full shadow-lg transition-transform duration-200 ease-in-out hover:scale-110 flex items-center justify-center"
         aria-label="Call us"
         transition:fly={{ duration: 300, x: 100 }}
       >
         <PhoneIcon size={24} />
         <span class="sr-only">Call Us</span>
-      </a>
+      </button>
     {/if}
   </div>
 

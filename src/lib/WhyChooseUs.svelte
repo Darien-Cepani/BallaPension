@@ -17,20 +17,20 @@
     {
       id: 1,
       icon: 'fa-solid fa-shield-halved',
-      title: 'Full Case Control',
-      description: 'We take full control of your case, from start to finish.'
+      title: 'Πλήρης Έλεγχος Υπόθεσης',
+      description: 'Αναλαμβάνουμε πλήρως τον έλεγχο της υπόθεσής σας, από την αρχή μέχρι το τέλος.'
     },
     {
       id: 2,
       icon: 'fa-solid fa-person-chalkboard',
-      title: 'Step-by-Step Guidance',
-      description: 'We guide you clearly through each stage of the process.'
+      title: 'Καθοδήγηση Βήμα-Βήμα',
+      description: 'Σας καθοδηγούμε με σαφήνεια σε κάθε στάδιο της διαδικασίας.'
     },
     {
       id: 3,
       icon: 'fa-solid fa-magnifying-glass-chart',
-      title: 'Decision & Error Resolution',
-      description: 'We proactively chase decisions and correct any errors.'
+      title: 'Επίλυση Αποφάσεων & Σφαλμάτων',
+      description: 'Παρακολουθούμε ενεργά τις αποφάσεις και διορθώνουμε τυχόν σφάλματα.'
     }
   ];
 
@@ -130,12 +130,22 @@
   ></div>
 
   <div bind:this={contentRef} class="relative container mx-auto px-4 sm:px-6 lg:px-8 z-10">
-    <h2 class="text-xl pb-2 text-center font-semibold leading-8 tracking-tight text-indigo-600 dark:text-indigo-400">Why choose us?</h2>
+    <h2 class="text-xl pb-2 text-center font-semibold leading-8 tracking-tight text-indigo-600 dark:text-indigo-400">Γιατί να μας επιλέξετε;</h2>
     <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-center mb-8 sm:mb-12 text-gray-900 dark:text-white">
-      Retirement without headaches
+      Η σύνταξη σας, χωρίς άγχος
     </h2>
-    <p class="text-lg sm:text-xl text-center max-w-3xl mx-auto mb-10 sm:mb-16 text-gray-700 dark:text-gray-300">
-      Backed by <span class="font-semibold text-indigo-600 dark:text-indigo-400">40+ years inside EFKA</span>. At BallaPension we make your pension application simple, accurate, and on time.
+    <p class="text-lg sm:text-xl text-left max-w-3xl mx-auto mb-10 sm:mb-16 text-gray-700 dark:text-gray-300">
+      Εδώ και <span class="font-semibold text-indigo-600 dark:text-indigo-400">15+ χρόνια</span>, 
+      επικεντρωνόμαστε σε ένα μόνο πράγμα: 
+      <span class="font-medium text-gray-900 dark:text-white">Τις συντάξεις ΕΦΚΑ</span>.
+      
+      Μεταξύ των μελών της ομάδας μας, μοιραζόμαστε 
+      <span class="font-semibold text-indigo-600 dark:text-indigo-400">50+ χρόνια</span> 
+      που συναναστρεφόμαστε με το οικοσύστημα του ΕΦΚΑ.
+      
+      <span class="font-semibold text-indigo-600 dark:text-indigo-400">6000+ χαρούμενους πελάτες</span> μετά, 
+      είμαστε εδώ για να πάρουμε το άγχος από πάνω σου αναφορικά με την 
+      <span class="font-medium text-gray-900 dark:text-white">πιό σημαντική απόφαση της υπόλοιπης ζωής σου</span>.
     </p>
     
     <div class="grid md:grid-cols-3 gap-6 sm:gap-8 max-w-5xl mx-auto">

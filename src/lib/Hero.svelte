@@ -92,24 +92,24 @@
   ></video>
 
   <!-- Overlay -->
-  <div class="absolute top-0 left-0 w-full h-full bg-black/50 dark:bg-black/70 z-10"></div> <!-- Slightly increased overlay opacity -->
+  <div class="absolute top-0 left-0 w-full h-full bg-black/20 dark:bg-black/20 z-10"></div> <!-- Slightly increased overlay opacity -->
 
   <!-- Content -->
-  <div class="mt-20 sm:mt-0 pl-15 sm:pl-0 pr-15 sm:pr-0 relative z-20 mx-auto max-w-2xl text-center px-4">
-    <h1 bind:this={headline} class="text-3xl font-bold tracking-tight text-white sm:text-6xl font-heading opacity-0 [text-shadow:_3px_3px_10px_rgb(0_0_0_/_60%)]">
-      <span class="block">Your pension.</span>
-      <span class="block">Done right.</span>
-      <span class="block">Zero stress.</span>
+  <div class="pt-8 pb-4 sm:pt-12 sm:pb-6 md:pt-16 md:pb-8 pl-15 sm:pl-0 pr-15 sm:pr-0 relative z-20 mx-auto max-w-2xl text-center px-4">
+    <h1 bind:this={headline} class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-white font-heading opacity-0 [text-shadow:_3px_3px_10px_rgb(0_0_0_/_60%)]">
+      <span class="block">Η σύνταξη, εν τάξη.</span>
+      <!-- <span class="block">Done right.</span> -->
+      <!-- <span class="block">Zero stress.</span> -->
     </h1>
-    <p bind:this={paragraph} class="mt-8 text-lg leading-8 sm:text-xl sm:leading-9 text-gray-100 dark:text-gray-200 opacity-0 [text-shadow:_1px_1px_6px_rgb(0_0_0_/_50%)]">
-      We handle everything. You just call us.
+    <p bind:this={paragraph} class="mt-4 sm:mt-6 md:mt-8 text-base leading-relaxed sm:text-lg sm:leading-7 md:text-xl md:leading-8 text-gray-100 dark:text-gray-200 opacity-0 [text-shadow:_1px_1px_6px_rgb(0_0_0_/_50%)]">
+      Βοηθώντας τους Έλληνες να πάρουν σύνταξη για πάνω από <strong>15 χρόνια.</strong>
     </p>
-    <div class="mt-12 lg:mt-12 flex items-center justify-center gap-x-6"> 
+    <div class="mt-6 sm:mt-8 md:mt-10 lg:mt-12 flex items-center justify-center gap-x-6"> 
       <a
         bind:this={ctaButton}
         href="tel:+302310265915"
-        class="rounded-full bg-gradient-to-r from-green-500 to-green-700 px-8 py-2 text-lg font-semibold text-white shadow-lg hover:from-green-600 hover:to-green-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-400 transition-all duration-300 ease-in-out opacity-0 transform hover:scale-105 focus:scale-105"
-        ><i class="fa-solid fa-phone mr-2"></i>Call us</a
+        class="rounded-lg bg-gradient-to-r from-green-500 to-green-700 px-8 py-2 text-lg font-semibold text-white shadow-lg hover:from-green-600 hover:to-green-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-400 transition-all duration-300 ease-in-out opacity-0 transform hover:scale-105 focus:scale-105"
+        ><i class="fa-solid fa-phone mr-2"></i>Κάντε κλήση</a
       >
     </div>
   </div>
@@ -133,8 +133,8 @@
     >
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
     </svg>
-    <span bind:this={scrollIndicatorText} class="mt-1 text-xs text-white filter drop-shadow-[0_1px_1px_rgba(0,0,0,0.7)] group-hover:text-green-300 transition-colors duration-200">
-      Learn more
+    <span bind:this={scrollIndicatorText} class="mt-1 text-xl text-white filter drop-shadow-[0_1px_1px_rgba(0,0,0,0.7)] group-hover:text-green-300 transition-colors duration-200">
+      Επιστροφή στην Αρχή
     </span>
   </div>
 </div>

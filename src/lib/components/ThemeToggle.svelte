@@ -29,21 +29,21 @@
   
   </script>
   
-  <a
+  <button
     on:click={toggleTheme}
     aria-label="Toggle dark mode"
     class:text-white={!scrolledDown}
-    class="rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-colors duration-200 cursor-pointer"
+    class="rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-colors duration-200 cursor-pointer"
   >
     <div class="relative h-9 w-9">
       {#if currentTheme === 'light'}
-        <div in:fly={{ x: 20, duration: 300 }} out:fade={{ duration: 200 }} class="absolute inset-0">
-          <Sun class="w-9 h-9 p-2 rounded-full bg-white text-indigo-600 shadow-sm hover:bg-white/50 transition-colors duration-200" />
+        <div in:fade={{ duration: 250 }} out:fade={{ duration: 200 }} class="absolute inset-0">
+          <Sun class="w-9 h-9 p-2 rounded-lg bg-white text-indigo-600 shadow-sm hover:bg-white/50 transition-colors duration-200" />
         </div>
       {:else}
-        <div in:fly={{ x: 20, duration: 300 }} out:fade={{ duration: 200 }} class="absolute inset-0">
-          <Moon class="w-9 h-9 p-2 rounded-full bg-indigo-900/50 text-indigo-100 shadow-sm hover:bg-indigo-600 transition-colors duration-200" />
+        <div in:fade={{ duration: 250 }} out:fade={{ duration: 200 }} class="absolute inset-0">
+          <Moon class="w-9 h-9 p-2 rounded-lg bg-indigo-900/50 text-indigo-100 shadow-sm hover:bg-indigo-600 transition-colors duration-200" />
         </div>
       {/if}
     </div>
-  </a>
+  </button>

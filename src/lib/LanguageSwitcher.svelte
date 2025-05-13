@@ -1,8 +1,7 @@
 <script>
-  import { PhoneIcon } from 'lucide-svelte';
   import { onMount } from 'svelte';
 
-  let currentLang = 'en'; // Default to English
+  let currentLang = 'el'; // Default to Greek
 
   // Function to read a cookie
   function getCookie(name) {
@@ -32,21 +31,21 @@
   onMount(() => {
     // Check the googtrans cookie to set initial button text
     const googtransCookie = getCookie('googtrans');
-    if (googtransCookie && googtransCookie.includes('/el')) {
-      currentLang = 'el';
-    } else {
+    if (googtransCookie && googtransCookie.includes('/en')) {
       currentLang = 'en';
+    } else {
+      currentLang = 'el';
     }
   });
 
   function switchLanguage() {
     let newLangPrefix;
-    if (currentLang === 'en') {
-      currentLang = 'el';
-      newLangPrefix = '/en/el'; // Translate from English to Greek
-    } else {
+    if (currentLang === 'el') {
       currentLang = 'en';
-      newLangPrefix = '/auto/en'; // Revert to English (original page language)
+      newLangPrefix = '/el/en'; // Translate from Greek to English
+    } else {
+      currentLang = 'el';
+      newLangPrefix = '/auto/el'; // Revert to Greek (original page language)
     }
     
     setCookie('googtrans', newLangPrefix, 7); // Set cookie for 7 days
@@ -63,19 +62,21 @@
   aria-label="Switch language"
 >
   <span class="flex items-center gap-1.5">
-    {#if currentLang === 'en'}      
-      Μετάφραση στα Ελληνικά
-      <img class="inline-block w-8 relative overflow-hidden rounded-sm" src="images/greece.webp" alt="Greek flag" srcset="">
-    {:else}
+    {#if currentLang === 'el'}      
       Translate to English
       <img class="inline-block w-8 relative overflow-hidden rounded-sm" src="images/english.webp" alt="English flag" srcset="">
+    {:else}
+      Μετάφραση στα Ελληνικά
+      <img class="inline-block w-8 relative overflow-hidden rounded-sm" src="images/greece.webp" alt="Greek flag" srcset="">
     {/if}
   </span>
 </button>
 
-<a
+<button
   on:click={switchLanguage}
-  class="notranslate bottom-18 text-white right-0 rounded-full w-15 h-14 z-50 shadow-lg transition-transform duration-200 ease-in-out hover:scale-110 md:hidden flex items-center justify-center relative overflow-hidden backdrop-blur-sm"
+  on:keydown={(e) => e.key === 'Enter' && switchLanguage()}
+  type="button"
+  class="notranslate bottom-18 text-white right-0 rounded-full w-16 h-12 z-50 shadow-lg transition-transform duration-200 ease-in-out hover:scale-110 md:hidden flex items-center justify-center relative overflow-hidden backdrop-blur-sm"
   aria-label="Switch language"
 >
   <div 
@@ -86,7 +87,7 @@
     {currentLang === 'en' ? 'Ελ' : 'En'}
   </h2>
   <span class="sr-only">{currentLang === 'en' ? 'Μετάφραση στα Ελληνικά' : 'Translate to English'}</span>
-</a>
+</button>
 
 <style>
   /* Add any specific styles for the button if Tailwind isn't enough */

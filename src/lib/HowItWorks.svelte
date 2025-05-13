@@ -3,7 +3,7 @@
   import { gsap } from 'gsap';
   import { ScrollTrigger } from 'gsap/ScrollTrigger';
   import { Check } from 'lucide-svelte';
-  import { fly, slide } from 'svelte/transition'; // Import slide transition
+  import { fade, fly, slide } from 'svelte/transition'; // Import slide transition
 
   export let accentColors = {
     indigo: {
@@ -50,50 +50,57 @@
   let steps = [
     { 
       id: 1, 
-      title: 'Paperwork Collection', // User change preserved
-      description: 'We gather all necessary documents for your pension case, meticulously assisting even if some paperwork is initially missing.', 
+      title: 'Λύνουμε το puzzle της εργασιακής σας ζωής', // User change preserved
+      description: 'Εντοπίζουμε τα χρόνια ασφάλισης σας, ακόμα και αν έχετε χάσει τα ένσημα σας. Από υποβολή ΥΔΑΑΒ μέχρι και την διεκπαιρέωση ενστάσεων, δουλεύουμε για εσάς.', 
       icon: 'fa-solid fa-file-invoice', 
       isExpanded: false 
     },
     { 
       id: 2, 
-      title: 'Work History Reconstruction', // User change preserved
-      description: 'Our team reconstructs your complete employment and insurance history, ensuring every detail is accounted for to maximize your claim.', 
+      title: 'Θεμελιώνουμε το συνταξιοδοτικό σας δικαίωμα', // User change preserved
+      description: 'Ελέγχουμε ποιοί νόμοι ισχύουν για εσάς, ποιός είναι ο προτιμότερος νόμος και αν είστε έτοιμοι να υποβάλετε αίτηση.', 
       icon: 'fa-solid fa-user-clock', 
       isExpanded: false 
     },
     { 
       id: 3, 
-      title: 'Entitlement & Legal Path Confirmation', // User change preserved
-      description: 'We verify your pension eligibility under current laws and identify the optimal legal pathway for your application.', 
+      title: 'Προυπολογισμός σύνταξης', // User change preserved
+      description: 'Υπολογίζουμε με ακρίβεια τι ποσό θα λάβετε από την κύρια σύνταξη, επικουρική, Εφάπαξ, αποζημίωση από τον εργοδότη, έως και ΕΑΣ και φόρο.', 
       icon: 'fa-solid fa-gavel', 
       isExpanded: false 
     },
     { 
       id: 4, 
-      title: 'Pension Calculation & Forecasting', // User change preserved
-      description: 'Receive a detailed calculation of all potential pension amounts and a clear forecast of your retirement income.', 
+      title: ' Σχεδιασμός στρατηγικής', // User change preserved
+      description: 'Σχεδιάζουμε σενάρια συνταξιοδότησης , υπολογίζοντας τα απαραίτητα βήματα, κόστη & οφέλη, ανάλογα με τις προτεραιότητες και ανάγκες σας.', 
       icon: 'fa-solid fa-calculator', 
       isExpanded: false 
     }, 
     { 
       id: 5, 
-      title: 'EFKA Application Filing', // User change preserved
-      description: 'We handle the entire EFKA application process, ensuring accuracy and completeness to avoid common pitfalls and delays.', 
+      title: 'Ωρίμανση φακέλου', // User change preserved
+      description: 'Συγκεντρώνουμε όλα τα απαραίτητα έγγραφα και δικαιολογητικά πριν την ώρα τους  για να βοηθήσουμε τον εισηγητή της υπόθεσης σου, για την γρηγορότερη απονομή σύνταξης', 
       icon: 'fa-solid fa-file-pen', 
       isExpanded: false 
     },
     { 
       id: 6, 
-      title: 'Proactive Follow-Up & Issue Resolution', // User change preserved
-      description: 'Our team actively chases your application file within EFKA, resolving any delays or bureaucratic issues that may arise.', 
+      title: 'Κατάθεση αίτησης σύνταξης', // User change preserved
+      description: 'Ετοιμάζουμε και υποβάλλουμε όλα τα έγγραφα στον ΕΦΚΑ', 
       icon: 'fa-solid fa-magnifying-glass-chart', 
       isExpanded: false 
     },
     { 
       id: 7, 
-      title: 'Decision Verification & Appeal', // User change preserved
-      description: 'We scrutinize the final pension decision for accuracy. If needed, we manage the appeal process on your behalf to secure your full entitlements.', 
+      title: 'Διαχείρηση εκκρεμμοτήτων', // User change preserved
+      description: 'Παρακολουθούμε την πορεία της αίτησης σου, επιλύουμε τυχόν προβλήματα και πιέχουμε για έγκαιρη επεξεργασία.', 
+      icon: 'fa-solid fa-stamp', 
+      isExpanded: false 
+    },
+    { 
+      id: 8, 
+      title: 'Έλεγχος απόφασης και ανάλυση αναδρομικών', // User change preserved
+      description: 'Διασφαλίζουμε ότι η οριστική απόφαση είναι σωστή, ή κάνουμε ένσταση και κυνηγάμε την υπόθεσή σου μέχρι τέλους. Αναλύουμε τις κρατήσεις σου και τυχόν αναδρομικά και κόστη, ώστε να γνωρίζεις πάντα τι συμβαίνει με την σύνταξη σου.', 
       icon: 'fa-solid fa-stamp', 
       isExpanded: false 
     },
@@ -102,42 +109,30 @@
   const packages = [
     {
       id: 'analysis',
-      name: 'Analysis & Forecast',
-      subtitle: 'Coverage: Steps 1–4',
-      description: 'Learn if and when you can retire, and how much you’ll receive.',
+      name: 'Θεμελίωση και ανάλυση',
+      subtitle: 'Κάλυψη: Βήματα 1–4',
+      description: 'λύνουμε το puzzle της ασφαλιστικής σας ζωής, και σας ενημερώνουμε για το ποσό της σύνταξης σας',
       features: [
-        'Gather paperwork (even if missing)',
-        'Rebuild full work history',
-        'Confirm entitlement & legal path',
-        'Calculate all pension types & amounts'
+        'λύνουμε το puzzle της εργασιακής σας ζωής',
+        'Θεμελιώνουμε το συνταξιοδοτικό σας δικαίωμα',
+        'Προυπολογισμός ποσού σύνταξης και κόστη',
+        'Σχεδιασμός στρατηγικής'
       ],
-      cta: 'I want to gather my paperwork',
+      cta: 'Θέλω να συγκεντρώσω τα έγγραφά μου',
       accentColor: 'indigo',
     },
     {
-      id: 'application',
-      name: 'Application & Completion',
-      subtitle: 'Coverage: Steps 5–7',
-      description: 'Ready to apply? We take it from here — all the way to final approval.',
-      features: [
-        'Prepare and file full EFKA application',
-        'Resolve delays & chase your file',
-        'Confirm decision accuracy & fight errors'
-      ],
-      cta: 'I want to apply for EFKA',
-      accentColor: 'green',
-    },
-    {
       id: 'full_service',
-      name: 'The Balla Method: Full Service',
-      subtitle: 'Comprehensive Coverage: Steps 1–7',
-      description: 'The complete peace of mind package, from initial analysis to final pension payout.',
+      name: 'Ωρίμανση και αιτηση',
+      subtitle: 'Κάλυψη: Βήματα 1–7',
+      description: 'ωριμάζουμε τον φάκελο σας πριν την ώρα του,  και κυνηγάμε την περίπτωση σας μέχρι τέλους.',
       features: [
-        'All features from Analysis & Application',
-        'Dedicated Case Manager',
-        'Priority Support'
+        'Ωρίμανση φακέλου',
+        'Κατάθεση αίτησης συνταξιοδότησης',
+        'Διαχείρηση εκκρεμμοτήτων',
+        'Επιβεβαίωση και έλεγχος οριστικής απόφασης'
       ],
-      cta: 'I want the full service',
+      cta: 'Θέλω τον πλήρειο υπηρεσία',
       accentColor: 'purple',
     }
   ];
@@ -257,31 +252,42 @@
 <section bind:this={sectionRef} class="py-16 sm:py-24 bg-gray-50 dark:bg-gray-800">
   <div class="mx-auto max-w-7xl px-6 lg:px-8">
     <div bind:this={titleBlock} class="mx-auto max-w-3xl mb-12 sm:mb-16 text-center">
-      <h2 class="text-xl font-semibold leading-8 tracking-tight text-indigo-600 dark:text-indigo-400">The Balla Method</h2>
-      <h2 class="mt-2 text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-5xl font-heading">Our Services & Process</h2>
-      <p class="mt-6 text-lg leading-7 text-gray-600 dark:text-gray-300">
-        We don’t offer random advice. We take over your pension process from start to finish, through one of three comprehensive services.
-        Choose how to explore: view our service packages or delve into the detailed step-by-step roadmap.
+      <h2 class="text-xl font-semibold leading-8 tracking-tight text-indigo-600 dark:text-indigo-400">Η μέθοδος Balla</h2>
+      <h2 class="mt-2 {activeView === 'packages' ? 'mb-2' : 'mb-10'} text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-5xl font-heading relative h-[1.4em]">
+        {#key activeView}
+          <span 
+            in:fly={{ y: 20, duration: 400, delay: 200 }} 
+            out:fly={{ y: -20, duration: 300 }}
+            class="absolute inset-0 transition-all duration-500 ease-in-out"
+          >
+            {activeView === 'packages' ? 'Οι υπηρεσίες μας' : 'Η διαδικασία μας: Η Μέθοδος Μπαλλά'}
+          </span>
+        {/key}
+      </h2>
+      <p class=" text-lg leading-7 text-gray-600 dark:text-gray-300">
+        Για πάνω από <strong class="text-indigo-600 dark:text-indigo-400">15 χρόνια</strong> βοηθούμε τους ασφαλισμένους να βγούν στη σύνταξη με τον <em>συμφερότερο</em> για αυτούς τρόπο. Εξειδικευόμαστε σε <strong class="text-indigo-600 dark:text-indigo-400">δύο κύριες υπηρεσίες</strong>: 
+        <span class="font-medium">Αναλύουμε και σας ενημερώνουμε</span> πλήρως για την ασφαλιστική σας εικόνα ή <span class="font-medium">αναλαμβάνουμε τα πάντα</span> για εσάς, από την αρχή ώς το τέλος.
       </p>
     </div>
 
     <!-- Toggle Switch -->
 <div class="mb-12 sm:mb-16 flex flex-col items-center justify-center">
-  <div class="relative flex px-2 py-1 bg-white/30 dark:bg-gray-700/40 backdrop-blur-md rounded-full shadow-lg border border-gray-200/100 dark:border-gray-600/30">
+  <div class="relative flex px-1 py-1 bg-white/30 dark:bg-gray-700/40 backdrop-blur-md rounded-xl shadow-lg border border-gray-200/100 dark:border-gray-600/30">
     <button 
       on:click={() => activeView = 'packages'}
-      class="relative z-10 px-5 py-2.5 sm:px-8 sm:py-2.5 text-sm sm:text-base font-medium rounded-full transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:ring-offset-1 {activeView === 'packages' ? 'text-white' : 'text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white'}"
-    >Services</button>
+      class="relative z-10 px-4 py-2 sm:px-8 sm:py-2.5 text-sm sm:text-base font-medium rounded-xl transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:ring-offset-1 {activeView === 'packages' ? 'text-white' : 'text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white'}"
+    >Υπηρεσίες</button>
     <button 
       on:click={() => activeView = 'roadmap'}
-      class="relative z-10 px-5 py-2.5 sm:px-8 sm:py-2.5 text-sm sm:text-base font-medium rounded-full transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:ring-offset-1 {activeView === 'roadmap' ? 'text-white' : 'text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white'}"
-    >The Steps</button>
+      class="relative z-10 px-4 py-2 sm:px-8 sm:py-2.5 text-sm sm:text-base font-medium rounded-xl transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:ring-offset-1 {activeView === 'roadmap' ? 'text-white' : 'text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white'}"
+    >Τα Σκαλιά</button>
     <span 
-      class="absolute inset-y-1 inset-x-4 w-1/2 rounded-full bg-indigo-500/90 dark:bg-indigo-600/90 backdrop-blur-sm shadow-md transition-all duration-300 ease-in-out"
+      class="absolute inset-y-1 inset-x-4 w-1/2 mb-0.5 rounded-xl bg-indigo-500/90 dark:bg-indigo-600/90 backdrop-blur-sm shadow-md transition-all duration-300 ease-in-out"
       style:left="{activeView === 'packages' ? '3px' : 'calc(50% - 4px)'}"
     ></span>
   </div>
-  <p class="text-xs text-gray-500 dark:text-gray-400 mt-2">Click to switch views</p>
+  <p class="text-xs text-gray-500 dark:text-gray-400 mt-2">
+    Κάντε κλικ για εναλλαγή προβολών</p>
 </div>
 
     <!-- Content Area: Packages or Roadmap -->
@@ -294,13 +300,16 @@
         {#if activeView === 'packages'}
           <div class="packages-view">
             <p class="text-center text-md sm:text-lg text-gray-700 dark:text-gray-300 max-w-2xl mx-auto mb-10 sm:mb-12">
-              The Balla Method – Three services. Seven steps. One trusted path. We don’t offer random advice. We take over your pension process from start to finish.
+              <span class="font-semibold text-indigo-600 dark:text-indigo-400">Η Μέθοδος Balla</span> – 
+              <span class="font-medium">Τρεις υπηρεσίες. Επτά βήματα.</span> Μία αξιόπιστη διαδρομή. 
+              Δεν προσφέρουμε τυχαίες συμβουλές. <span class="font-medium">Αναλαμβάνουμε τη διαδικασία 
+              σύνταξής σας από την αρχή μέχρι το τέλος.</span>
             </p>
-            <div class="grid md:grid-cols-1 lg:grid-cols-3 gap-8 max-w-6xl mx-auto items-stretch">
+            <div class="flex flex-col lg:flex-row gap-8 max-w-6xl mx-auto items-stretch justify-center flex-wrap">
               {#each packages as pkg, i (pkg.id)}
                 <div 
                   bind:this={packageCardElements[i]} 
-                  class="group glass-card relative flex flex-col bg-white/40 dark:bg-gray-700/50 backdrop-blur-md rounded-xl shadow-lg p-6 sm:p-8 border border-gray-300 dark:border-gray-600 {accentColors[pkg.accentColor]?.hoverBorder || ''} {accentColors[pkg.accentColor]?.hoverShadow || ''} transition-all duration-300 ease-in-out hover:scale-[1.03]"
+                  class="group glass-card relative flex flex-col bg-white/40 dark:bg-gray-700/50 backdrop-blur-md rounded-xl shadow-lg p-6 sm:p-8 border border-gray-300 dark:border-gray-600 {accentColors[pkg.accentColor]?.hoverBorder || ''} {accentColors[pkg.accentColor]?.hoverShadow || ''} transition-all duration-300 ease-in-out hover:scale-[1.03] w-full max-w-md flex-1"
                 >
                   <h3 class="text-2xl font-bold text-gray-800 dark:text-gray-100 {accentColors[pkg.accentColor]?.hoverText || ''} mb-2 transition-colors duration-300">{pkg.name}</h3>
                   <p class="text-sm font-semibold text-gray-600 dark:text-gray-400 mb-4">{pkg.subtitle}</p>
@@ -328,7 +337,13 @@
         {:else if activeView === 'roadmap'}
           <div class="roadmap-view">
             <p class="text-center text-md sm:text-lg text-gray-700 dark:text-gray-300 max-w-2xl mx-auto mb-10 sm:mb-12">
-              Follow our proven 7-step process, refined over 40 years, to secure your pension with confidence.
+              <span class="font-semibold "><em class="text-indigo-600 dark:text-indigo-400">2</em> υπηρεσίες,
+              <em class="text-indigo-600 dark:text-indigo-400">8</em> βήματα, 
+              <em class="text-indigo-600 dark:text-indigo-400">1</em> αξιόπιστη διαδρομή.</span><br>
+              Μετά από <strong class="text-indigo-600 dark:text-indigo-400">40+ χρόνια εμπειρίας</strong> στον ΕΦΚΑ, 
+              η τ. διευθύντρια του ΙΚΑ Αριστοτέλους, <span class="font-medium">Όλγα Μπαλλά</span>, 
+              ακολουθεί τον αποδεδειγμένο τρόπο 8 βημάτων που διασφαλίζει ότι στην 
+              <em class="text-indigo-600 dark:text-indigo-400">Ballapension.com</em> δεν αφήνουμε <span class="font-medium">τίποτα στην τύχη</span>.
             </p>
             <div class="relative max-w-md mx-auto md:max-w-3xl">
               <div bind:this={timelineLine} class="absolute top-0 bottom-0 w-1 md:w-1.5 bg-gradient-to-b from-indigo-300 via-purple-300 to-pink-300 dark:from-indigo-700 dark:via-purple-700 dark:to-pink-700 left-4 md:left-1/2 md:-translate-x-1/2 rounded-full" style="transform-origin: top center;"></div>
@@ -340,7 +355,7 @@
                 <div class="w-full my-6 md:my-8 py-2 md:py-0 text-center md:relative md:flex md:justify-center">
                     <div class="md:absolute md:left-1/2 md:-translate-x-1/2">
                         <span class="inline-block px-4 py-1.5 text-xs font-semibold tracking-wider uppercase rounded-full bg-indigo-100 text-indigo-700 dark:bg-indigo-900 dark:text-indigo-300">
-                            Service 1: Analysis & Forecast
+                          Μέρος 1: Ανάλυση & Πρόβλεψη
                         </span>
                     </div>
                 </div>
@@ -351,7 +366,7 @@
                     <div class="w-full my-6 md:my-8 py-2 md:py-0 text-center md:relative md:flex md:justify-center">
                         <div class="md:absolute md:left-1/2 md:-translate-x-1/2">
                             <span class="inline-block px-4 py-1.5 text-xs font-semibold tracking-wider uppercase rounded-full bg-indigo-100 text-indigo-700 dark:bg-indigo-900 dark:text-indigo-300">
-                                Service 2: Application & Submission
+                                Μέρος 2: Αίτημα & Παραμέτρωση
                             </span>
                         </div>
                     </div>
@@ -361,23 +376,33 @@
                   <div bind:this={stepElements[i]} class="step-item relative w-full flex items-start md:items-center md:py-6 pl-10 md:pl-0">
                     <!-- Desktop Layout: Alternating Sides -->
                     <div class="hidden md:flex w-1/2 {i % 2 === 0 ? 'pr-8 justify-end text-right' : 'pl-8 justify-start text-left order-2'} items-start">
-                      <div class="step-content-box p-4 sm:p-6 rounded-xl shadow-xl w-full bg-slate-50/80 dark:bg-slate-800/80 border border-slate-200/50 dark:border-slate-700/50 backdrop-blur-md">
-                        <button on:click={() => toggleStepExpansion(step.id)} class="w-full text-left flex justify-start items-center flex-col">
-                          <h2 class="w-full sm:text-lg font-semibold leading-8 tracking-tight text-indigo-600 dark:text-indigo-400">Step {step.id}</h2>
-                          <div>
+                      <button 
+                        type="button"
+                        class="step-content-box p-4 sm:p-6 rounded-xl shadow-xl w-full bg-slate-50/80 dark:bg-slate-800/80 border border-slate-200/50 dark:border-slate-700/50 backdrop-blur-md hover:bg-slate-100/90 dark:hover:bg-slate-700/90 transition-colors duration-200 text-left"
+                        on:click={() => toggleStepExpansion(step.id)}
+                        on:keydown={(e) => e.key === 'Enter' && toggleStepExpansion(step.id)}
+                        aria-label="Expand step {step.id}"
+                        aria-expanded={step.isExpanded}
+                      >
+                        <div class="w-full text-left flex justify-between items-start">
+                          <div class="flex flex-col w-full">
+                            <h2 class="text-lg font-semibold text-indigo-600 dark:text-indigo-400 mb-2">Step {step.id}</h2>
                             <div class="flex items-center">
-                              <i class="{step.icon} mr-3 text-white bg-indigo-500 dark:bg-indigo-600 rounded-full p-2 text-md sm:text-lg shadow-md"></i>
-                              <h3 class="text-md sm:text-lg font-semibold text-gray-900 dark:text-white">{step.title}</h3>
+                              <i class="{step.icon} mr-3 text-white bg-indigo-500 dark:bg-indigo-600 rounded-full p-2 text-lg shadow-md"></i>
+                              <h3 class="text-lg font-semibold text-gray-900 dark:text-white">{step.title}</h3>
                             </div>
-                            <i class="fa-solid {step.isExpanded ? 'fa-chevron-up' : 'fa-chevron-down'} ml-2 text-gray-500 dark:text-gray-400 transition-transform duration-200 text-sm sm:text-base"></i>
+                            <div class="flex items-center mt-2">
+                              <span class="text-sm text-indigo-500 dark:text-indigo-300 mr-1">{step.isExpanded ? 'Απόκρυψη' : 'Εμφάνιση'}</span>
+                              <i class="fa-solid {step.isExpanded ? 'fa-chevron-up' : 'fa-chevron-down'} text-indigo-500 dark:text-indigo-300 transition-transform duration-200"></i>
+                            </div>
                           </div>
-                        </button>
+                        </div>
                         {#if step.isExpanded}
-                          <div transition:slide={{ duration: 300 }}>
-                            <p class="text-sm sm:text-base text-gray-600 dark:text-gray-400 mt-3 pl-8 sm:pl-10">{step.description}</p>
+                          <div transition:slide={{ duration: 250 }}>
+                            <p class="text-sm sm:text-base text-gray-600 dark:text-gray-400 mt-3 pl-2 sm:pl-2 border-l-2 border-indigo-300 dark:border-indigo-700">{step.description}</p>
                           </div>
                         {/if}
-                      </div>
+                      </button>
                     </div>
                     <!-- Timeline Dot (Desktop & Mobile) -->
                     <div class="absolute left-4 top-2 md:left-1/2 md:top-1/2 md:-translate-x-1/2 md:-translate-y-1/2 w-5 h-5 rounded-full border-2 border-white dark:border-slate-900 bg-indigo-500 dark:bg-indigo-400 shadow-md z-10 flex items-center justify-center">
@@ -406,15 +431,6 @@
                       </div>
                     </div>
                   </div>
-                  {#if step.id === 7}
-                    <div class="w-full my-6 md:my-8 py-2 md:py-0 text-center md:relative md:flex md:justify-center">
-                        <div class="md:absolute md:left-1/2 md:-translate-x-1/2">
-                            <span class="inline-block px-4 py-1.5 text-xs font-semibold tracking-wider uppercase rounded-full bg-indigo-100 text-indigo-700 dark:bg-indigo-900 dark:text-indigo-300">
-                                Service 3: The Balla Method (All of the above)
-                            </span>
-                        </div>
-                    </div>
-                  {/if}
                 {/each}
               </div>
             </div>

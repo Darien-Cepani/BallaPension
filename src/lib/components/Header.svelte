@@ -113,7 +113,7 @@
   <nav 
     class:shadow-lg={scrolledDown}
     class:backdrop-blur-sm={scrolledDown}
-    class="mx-auto max-w-5xl rounded-full flex items-center justify-between p-2 px-4 md:px-6 md:p-3transition-all duration-300 ease-in-out 
+    class="mx-auto max-w-7xl rounded-xl flex items-center justify-between p-2 px-4 md:px-6 md:p-3transition-all duration-300 ease-in-out 
            {scrolledDown 
              ? 'border border-gray-200/70 dark:border-gray-700/70 bg-white/80 dark:bg-gray-800/80' 
              : 'border border-transparent bg-transparent'}"
@@ -124,41 +124,51 @@
       <a bind:this={logo} href="/" class="-m-1.5 p-1.5 flex flex-row items-center gap-x-2 opacity-0">
         <span class="sr-only">BallaPension</span>
         <img class:invert={!scrolledDown} class="h-7 md:h-9 w-auto dark:invert" src="branding/logo.png" alt="BallaPension Logo">
-        <h2 class="font-bold text-sm sm:text-xl transition-colors duration-300 ease-in-out" 
-            class:text-white={!scrolledDown} 
-            class:text-black={scrolledDown}
-            class:dark:text-white={scrolledDown} >BallaPension</h2>
+        <div class="flex flex-col">
+          <h2 class="font-bold text-sm sm:text-xl transition-colors duration-300 ease-in-out" 
+              class:text-white={!scrolledDown} 
+              class:text-black={scrolledDown}
+              class:dark:text-white={scrolledDown}>BallaPension</h2>
+          <span class="text-xs -mt-1 transition-colors duration-300 ease-in-out"
+                class:text-white={!scrolledDown} 
+                class:text-gray-600={scrolledDown}
+                class:dark:text-gray-300={scrolledDown}>Est. 2010</span>
+        </div>
       </a>
     </div>
     <!-- Desktop Navigation (hidden on small screens) -->
-    <div class="hidden md:flex md:gap-x-5 lg:gap-x-4 items-center">
-      <a bind:this={navLinks[0]} href="#how-it-works" on:click={closeMobileMenu} class="text-lg font-semibold leading-6 hover:bg-indigo-600 hover:text-white dark:hover:bg-indigo-400 py-2 px-4 rounded-full transition-colors duration-200 ease-in-out opacity-0"
+    <div class="hidden xl:flex xl:gap-x-6 items-center">
+      <a bind:this={navLinks[0]} href="#how-it-works" on:click={closeMobileMenu} class="text-sm lg:text-base xl:text-lg font-semibold leading-6 hover:bg-indigo-600 hover:text-white dark:hover:bg-indigo-400 py-1.5 px-2 lg:py-2 lg:px-3 xl:px-4 rounded-full transition-colors duration-200 ease-in-out opacity-0"
          class:text-white={!scrolledDown}
          class:text-gray-900={scrolledDown}
-         class:dark:text-white={scrolledDown}>How it Works</a>
-      <a bind:this={navLinks[1]} href="#testimonials" on:click={closeMobileMenu} class="text-lg font-semibold leading-6 hover:bg-indigo-600 hover:text-white dark:hover:bg-indigo-400 py-2 px-4 rounded-full transition-colors duration-200 ease-in-out opacity-0"
+         class:dark:text-white={scrolledDown}>Οι υπηρεσίες μας</a>
+      <a bind:this={navLinks[1]} href="#testimonials" on:click={closeMobileMenu} class="text-sm lg:text-base xl:text-lg font-semibold leading-6 hover:bg-indigo-600 hover:text-white dark:hover:bg-indigo-400 py-1.5 px-2 lg:py-2 lg:px-3 xl:px-4 rounded-full transition-colors duration-200 ease-in-out opacity-0"
          class:text-white={!scrolledDown}
          class:text-gray-900={scrolledDown}
-         class:dark:text-white={scrolledDown}>Testimonials</a>
-      <a bind:this={navLinks[2]} href="#contact" on:click={closeMobileMenu} class="text-lg font-semibold leading-6 hover:bg-indigo-600 hover:text-white dark:hover:bg-indigo-400 py-2 px-4 rounded-full transition-colors duration-200 ease-in-out opacity-0"
+         class:dark:text-white={scrolledDown}>Η μέθοδος Μπαλλά</a>
+      <a bind:this={navLinks[2]} href="#contact" on:click={closeMobileMenu} class="text-sm lg:text-base xl:text-lg font-semibold leading-6 hover:bg-indigo-600 hover:text-white dark:hover:bg-indigo-400 py-1.5 px-2 lg:py-2 lg:px-3 xl:px-4 rounded-full transition-colors duration-200 ease-in-out opacity-0"
          class:text-white={!scrolledDown}
          class:text-gray-900={scrolledDown}
-         class:dark:text-white={scrolledDown}>Contact</a>
+         class:dark:text-white={scrolledDown}>Επικοινωνία</a>
+      <a bind:this={navLinks[3]} href="#faq" on:click={closeMobileMenu} class="text-sm lg:text-base xl:text-lg font-semibold leading-6 hover:bg-indigo-600 hover:text-white dark:hover:bg-indigo-400 py-1.5 px-2 lg:py-2 lg:px-3 xl:px-4 rounded-full transition-colors duration-200 ease-in-out opacity-0"
+         class:text-white={!scrolledDown}
+         class:text-gray-900={scrolledDown}
+         class:dark:text-white={scrolledDown}>FAQ</a>
     </div>
     <!-- Right-side Actions (Visible on all sizes, adjusted layout for mobile) -->
-    <div class="flex lg:flex-1 justify-end items-center gap-x-2 sm:gap-x-4">
+    <div class="flex lg:flex-1 justify-end items-center gap-x-2 sm:gap-x-3">
       <a bind:this={getHelpButton} 
             href="tel:+302310265915" on:click={closeMobileMenu}
-            class="hidden md:inline-flex cta-pulse rounded-full bg-green-600 px-3 sm:px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-green-500 dark:hover:bg-green-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600 dark:focus-visible:outline-green-400 transition-colors duration-200 ease-in-out opacity-0"
+            class="hidden xl:inline-flex cta-pulse rounded-lg bg-green-600 px-2 sm:px-3 lg:px-4 py-1.5 lg:py-2 text-xs sm:text-sm font-semibold text-white shadow-sm hover:bg-green-500 dark:hover:bg-green-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600 dark:focus-visible:outline-green-400 transition-colors duration-200 ease-in-out opacity-0"
           >
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"></path></svg>
-            Call us
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 lg:h-5 lg:w-5 mr-1 lg:mr-2" viewBox="0 0 20 20" fill="currentColor"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"></path></svg>
+            <span class="hidden sm:inline">Κάντε κλήση</span>
           </a>
       <div bind:this={themeToggle} class="opacity-0">
         <ThemeToggle />
       </div>
       <!-- Mobile menu button container (hidden on medium screens and up) -->
-    <div class="flex md:hidden">
+    <div class="flex xl:hidden">
       <button 
         bind:this={mobileMenuButton} 
         on:click|stopPropagation={() => mobileMenuOpen = !mobileMenuOpen}
@@ -189,7 +199,7 @@
     <div 
       bind:this={mobileMenuPanel}
       transition:slide={{ duration: 300, axis: 'y' }}
-      class="md:hidden absolute left-0 right-0 top-full mt-2 z-40 p-4 
+      class="xl:hidden absolute left-0 right-0 top-full mt-2 z-40 p-4 
              bg-white dark:bg-gray-800 
              shadow-xl backdrop-blur-sm 
              border border-gray-200/50 dark:border-gray-700/50 
@@ -198,12 +208,12 @@
       role="dialog"
     >
       <div class="space-y-2">
-        <a href="#how-it-works" on:click={closeMobileMenu} class="block rounded-lg py-2 px-3 text-base font-semibold leading-7 text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-800">How it Works</a>
-        <a href="#testimonials" on:click={closeMobileMenu} class="block rounded-lg py-2 px-3 text-base font-semibold leading-7 text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-800">Testimonials</a>
-        <a href="#contact" on:click={closeMobileMenu} class="block rounded-lg py-2 px-3 text-base font-semibold leading-7 text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-800">Contact</a>
+        <a href="#how-it-works" on:click={closeMobileMenu} class="block rounded-lg py-2 px-3 text-base font-semibold leading-7 text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-800">Οι υπηρεσίες μας</a>
+        <a href="#testimonials" on:click={closeMobileMenu} class="block rounded-lg py-2 px-3 text-base font-semibold leading-7 text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-800">Η μέθοδος Μπαλλά</a>
+        <a href="#contact" on:click={closeMobileMenu} class="block rounded-lg py-2 px-3 text-base font-semibold leading-7 text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-800">Επικοινωνία</a>
+        <a href="#faq" on:click={closeMobileMenu} class="block rounded-lg py-2 px-3 text-base font-semibold leading-7 text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-800">Συχνές Ερωτήσεις</a>
         <hr class="border-gray-200 dark:border-gray-700 my-2" />
-        <a href="tel:+302310265915" on:click={closeMobileMenu} class="block rounded-lg py-2 px-3 text-base font-semibold leading-7 text-green-700 dark:text-green-500"><i class="fas fa-phone mr-1" aria-hidden="true"></i>Call Us</a>
-        <a href="#contact" on:click={closeMobileMenu} class="block rounded-lg py-2 px-3 text-base font-semibold leading-7 text-indigo-600 dark:text-indigo-400 hover:bg-indigo-100 dark:hover:bg-indigo-800"><i class="fas fa-envelope mr-1" aria-hidden="true"></i>Get Help Now</a>
+        <a href="tel:+302310265915" on:click={closeMobileMenu} class="block rounded-lg py-2 px-3 text-base font-semibold leading-7 text-green-700 dark:text-green-500"><i class="fas fa-phone mr-1" aria-hidden="true"></i>Κάντε κλήση</a>
       </div>
     </div>
   {/if}
