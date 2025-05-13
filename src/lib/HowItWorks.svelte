@@ -252,7 +252,7 @@
 <section bind:this={sectionRef} class="py-16 sm:py-24 bg-gray-50 dark:bg-gray-800">
   <div class="mx-auto max-w-7xl px-6 lg:px-8">
     <div bind:this={titleBlock} class="mx-auto max-w-3xl mb-12 sm:mb-16 text-center">
-      <h2 class="text-xl font-semibold leading-8 tracking-tight text-indigo-600 dark:text-indigo-400">Η μέθοδος Balla</h2>
+      <h2 class="text-xl font-semibold leading-8 tracking-tight text-indigo-600 dark:text-indigo-400">Η μέθοδος Μπαλλά</h2>
       <h2 class="mt-2 {activeView === 'packages' ? 'mb-2' : 'mb-10'} text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-5xl font-heading relative h-[1.4em]">
         {#key activeView}
           <span 
